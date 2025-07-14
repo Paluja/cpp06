@@ -53,13 +53,10 @@ static void printPseudoLiteral(const string &str)
     else
     {
         std::cout << "float: " << str << std::endl;
-        std::cout << "double: " << str.substr(0, str.size() - 1) << std::endl; // Remove 'f' for double
+        std::cout << "double: " << str.substr(0, str.size() - 1) << std::endl;
     }
 }
 
-
-
-//probar con los limites , por si hay que anyadirlo
 
 static double stringToDouble(const std::string& s) {
     std::istringstream iss(s);
@@ -85,7 +82,7 @@ static int stringToInt(const std::string& s) {
 
 static void printValues(double value)
 {
-     std::cout << "char: ";
+    std::cout << "char: ";
     if (std::isnan(value) || value < 0 || value > 127)
         std::cout << "impossible" << std::endl;
     else if (!std::isprint(static_cast<char>(value)))
@@ -115,25 +112,20 @@ static void printValues(double value)
 void ScalarConverter::convert(string &input) {
     double value;
 
-    // Char entre comillas simples: ej. 'a'
     if (input.length() == 3 && input[0] == '\'' && input[2] == '\'') {
         char c = input[1];
         value = static_cast<double>(c);
     }
-    // Pseudo-input
     else if (isPseudoLiteral(input)) {
         printPseudoLiteral(input);
         return;
     }
-    // Float
     else if (input[input.length() - 1] == 'f') {
         value = stringToFloat(input);
     }
-    // Double
     else if (input.find('.') != std::string::npos) {
         value = stringToDouble(input);
     }
-    // Int
     else {
         value = static_cast<double>(stringToInt(input));
     }
