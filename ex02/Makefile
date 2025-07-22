@@ -4,10 +4,7 @@ NAME = ex02
 CXX = c++
 CXXFLAGS = -Wall -Wextra -Werror -std=c++98
 
-SRCS = A.cpp \
-	   B.cpp \
-	   C.cpp \
-	   Base/Base.cpp \
+SRCS = Base/Base.cpp \
 	   main.cpp
 
 OBJS = $(SRCS:.cpp=.o)

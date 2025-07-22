@@ -12,6 +12,7 @@ Base::~Base()
 
 Base *Base::generate(void)
 {
+    std::srand(time(NULL));
     int rand = std::rand() %3;
 
     switch (rand)
@@ -22,11 +23,14 @@ Base *Base::generate(void)
     case 1:
         std::cout << "Generating B object." << std::endl;
         return new B();
-    default:
+    case 2:
         std::cout << "Generating C object." << std::endl;
         return new C();
+    default:
+        std::cout << "Unknown type, returning NULL." << std::endl;
+        return NULL;
     }
-    return NULL;
+    
 }
 
 

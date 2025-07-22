@@ -4,7 +4,7 @@
 
 int main(void)
 {
-    Base *basePtr = Base().generate();
+    Base *basePtr = NULL;
     
     std::cout << "Generated object pointer: " << basePtr << std::endl;
     
